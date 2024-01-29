@@ -11,7 +11,7 @@ import SwiftUI
 struct AddTask: View {
     @State var Task: TaskToDo
     @Environment(\.modelContext) private var ModelContext
-    @Environment(\.dismiss) private var Dissmiss
+    @Environment(\.dismiss) private var Dismiss
 
     var body: some View {
         NavigationStack {
@@ -30,7 +30,7 @@ struct AddTask: View {
             }.toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        Dissmiss()
+                        Dismiss()
                     } label: {
                         Image(systemName: "xmark")
                     }
@@ -39,6 +39,7 @@ struct AddTask: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         ModelContext.insert(Task)
+                        Dismiss()
                     } label: {
                         Image(systemName: "plus")
                     }
