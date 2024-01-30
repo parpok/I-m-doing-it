@@ -12,8 +12,8 @@ struct TaskViewButton: View {
 
     var body: some View {
         HStack {
-            Image(systemName: Task.isDone ? "square" : "checkmark.square")
-            Text(Task.content)
+            Image(systemName: Task.isDone ? "checkmark.square" : "square")
+            Text(Task.content)/*.bold().fontDesign(.rounded)*/
 
             Button("") {
                 Task.isDone.toggle()

@@ -16,14 +16,14 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: Text("Morning")) {
+                Section(header: Text("Right now")) { //When sorting happens change it
                     ForEach(tasks) { task in
                         TaskViewButton(Task: task)
-                            .swipeActions(allowsFullSwipe: true) {
-                                Button("Delete", systemImage: "trash", role: .destructive) {
-                                    ModelContext.delete(task)
-                                }
-                            }
+//                            .swipeActions(allowsFullSwipe: true) {
+//                                Button("Delete", systemImage: "trash", role: .destructive) {
+//                                    ModelContext.delete(task)
+//                                } This should be only for testing
+//                            }
                     }
 
                     //                Section(header: Text("Afternoon")) {
@@ -37,15 +37,15 @@ struct ContentView: View {
                     //                }
                     //
                     //                Make it sortable with @queries
-
                 }
             }.toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button { isPresented.toggle()
+                    Button() {
+                        isPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
                     }.sheet(isPresented: $isPresented, content: {
-                        AddTask(Task: emptyTask)
+                        AddTask(Task: TaskToDo(id: UUID(), content: "", day: .now, isRepeating: false, isDone: false)) // It must be like this so when someone adds mutiple items in the same instance of the app they will appear as other items and not override the added item
                     })
                 }
             }
@@ -53,7 +53,6 @@ struct ContentView: View {
     }
 }
 
-let emptyTask = TaskToDo(id: UUID(), content: "", day: .now, isRepeating: false, isDone: false)
 
 #Preview {
     ContentView()

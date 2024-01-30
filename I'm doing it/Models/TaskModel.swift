@@ -48,6 +48,6 @@ class TaskToDo {
         self.day = day
         self.timeOfDay = TimeOfDay(from: day)
         self.isRepeating = isRepeating
-        self.isDone = isDone
+        self.isDone = false
     }
 }
