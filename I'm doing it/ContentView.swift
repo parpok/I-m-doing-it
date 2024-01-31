@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: Text("Right now")) { //When sorting happens change it
+                Section(header: Text("Right now")) { // When sorting happens change it
                     ForEach(tasks) { task in
                         TaskViewButton(Task: task)
 //                            .swipeActions(allowsFullSwipe: true) {
@@ -40,7 +40,7 @@ struct ContentView: View {
                 }
             }.toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button() {
+                    Button {
                         isPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
@@ -48,12 +48,12 @@ struct ContentView: View {
                         AddTask(Task: TaskToDo(id: UUID(), content: "", day: .now, isRepeating: false, isDone: false)) // It must be like this so when someone adds mutiple items in the same instance of the app they will appear as other items and not override the added item
                     })
                 }
-            }
+            }.navigationTitle("I'm doing it")
         }
     }
 }
 
-
 #Preview {
     ContentView()
+        .modelContainer(for: TaskToDo.self, inMemory: true)
 }
