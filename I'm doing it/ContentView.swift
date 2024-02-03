@@ -45,7 +45,7 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "plus")
                     }.sheet(isPresented: $isPresented, content: {
-                        AddTask(Task: TaskToDo(id: UUID(), content: "", day: .now, isRepeating: false, isDone: false)) // It must be like this so when someone adds mutiple items in the same instance of the app they will appear as other items and not override the added item
+                        AddTask()
                     })
                 }
             }.navigationTitle("I'm doing it")

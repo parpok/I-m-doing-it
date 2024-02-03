@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TaskViewButton: View {
-    var Task: TaskToDo
+    @Bindable var Task: TaskToDo
 
     var body: some View {
         HStack {
             Image(systemName: Task.isDone ? "checkmark.square" : "square")
-            Text(Task.content)/*.bold().fontDesign(.rounded)*/
+            Text(Task.content).bold().fontDesign(.rounded)
 
             Button("") {
                 Task.isDone.toggle()
@@ -23,5 +23,5 @@ struct TaskViewButton: View {
 }
 
 #Preview {
-    TaskViewButton(Task: PreviewTask)
+    TaskViewButton(Task: PreviewTask) // Preview wont work I guess I'll leaev it for now
 }

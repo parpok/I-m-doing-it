@@ -9,23 +9,26 @@ import SwiftData
 import SwiftUI
 
 struct AddTask: View {
-    @State var Task: TaskToDo
     @Environment(\.modelContext) private var ModelContext
     @Environment(\.dismiss) private var Dismiss
+    
+    @State var TaskContent: String = ""
+    @State var TaskDay:Date = .now
+    @State var TaskIsRepeating: Bool = false
 
     var body: some View {
         NavigationStack {
             List {
                 Section(header: Text("Naming")) {
-                    TextField("Task name", text: $Task.content, axis: .vertical).bold().font(.title2).fontDesign(.rounded)
+                    TextField("Task name", text: $TaskContent, axis: .vertical).bold().font(.title2).fontDesign(.rounded)
                     Text("Make it simple and very easy to do. It should also be very descriptive.").font(.caption)
                 }
                 Section(header: Text("Timing")) {
-                    DatePicker("When you want to start it", selection: $Task.day, displayedComponents: .date)
-                    DatePicker("Around what time would you like to do it", selection: $Task.day, displayedComponents: .hourAndMinute)
+                    DatePicker("When you want to start it", selection: $TaskDay, displayedComponents: .date)
+                    DatePicker("Around what time would you like to do it", selection: $TaskDay, displayedComponents: .hourAndMinute)
                 }
                 Section(header: Text("Other")) {
-                    Toggle("Do you want to repeat it?", isOn: $Task.isRepeating)
+                    Toggle("Do you want to repeat it?", isOn: $TaskIsRepeating)
                 }
             }.toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -38,7 +41,7 @@ struct AddTask: View {
 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        ModelContext.insert(Task)
+                        ModelContext.insert(TaskToDo(id: UUID(), content: TaskContent, day: TaskDay, isRepeating: TaskIsRepeating, isDone: false))
                         Dismiss()
                     } label: {
                         Image(systemName: "plus")
@@ -50,5 +53,5 @@ struct AddTask: View {
 }
 
 #Preview {
-    AddTask(Task: PreviewTask)
+    AddTask()
 }
