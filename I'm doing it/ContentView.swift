@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var ModelContext
     @State private var isAddTaskPresented = false
     @State private var isDonePresented = false
-    @Query var tasks: [TaskToDo] // Sort using the Enum TimeOfDay value
+    @Query(filter: #Predicate<TaskToDo>{item in item.isDone == false}, sort: [SortDescriptor(\TaskToDo.content)]) var tasks: [TaskToDo]
 
     var body: some View {
         NavigationStack {
@@ -25,7 +25,7 @@ struct ContentView: View {
                 Button{
                     isDonePresented.toggle()
                 } label: {
-                    Text("Show done items")
+                    Text("Show completed items")
                 }.sheet(isPresented: $isDonePresented, content: {
                     Done()
                 })

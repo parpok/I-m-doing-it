@@ -9,8 +9,9 @@ import SwiftData
 import SwiftUI
 
 struct Done: View {
-    @Query(filter: #Predicate<TaskToDo>{item in item.isDone}, sort: [SortDescriptor(\TaskToDo.content)]) var StuffDone: [TaskToDo]
+    @Query(filter: #Predicate<TaskToDo> { item in item.isDone }, sort: [SortDescriptor(\TaskToDo.content)]) var StuffDone: [TaskToDo]
     @Environment(\.modelContext) private var ModelContext
+    @Environment(\.dismiss) private var Dismiss
 
     var body: some View {
         NavigationStack {
@@ -23,8 +24,16 @@ struct Done: View {
                             }
                         }
                 }
+            }.navigationTitle("Completed tasks").navigationBarTitleDisplayMode(.inline).toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        Dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
             }
-        }.padding().navigationTitle("Tasks that are done")
+        }
     }
 }
 
