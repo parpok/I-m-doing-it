@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B38488C2B70D20C00505564 /* Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38488B2B70D20C00505564 /* Done.swift */; };
 		8B6A1B822B66DAB7008F6DE8 /* PreviewTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A1B812B66DAB7008F6DE8 /* PreviewTasks.swift */; };
 		8B6A1B842B66DE64008F6DE8 /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A1B832B66DE64008F6DE8 /* AddTask.swift */; };
 		8B8EB5E92B67DBB800406FAA /* TaskViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB5E82B67DBB800406FAA /* TaskViewButton.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B38488B2B70D20C00505564 /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
 		8B6A1B812B66DAB7008F6DE8 /* PreviewTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTasks.swift; sourceTree = "<group>"; };
 		8B6A1B832B66DE64008F6DE8 /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		8B8EB5E82B67DBB800406FAA /* TaskViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewButton.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				8B90236B2B66B9A900EE488D /* ContentView.swift */,
 				8B8EB5E82B67DBB800406FAA /* TaskViewButton.swift */,
 				8B6A1B832B66DE64008F6DE8 /* AddTask.swift */,
+				8B38488B2B70D20C00505564 /* Done.swift */,
 				8B9023772B66B9B400EE488D /* Models */,
 				8B90236D2B66B9A900EE488D /* Assets.xcassets */,
 				8B90236F2B66B9A900EE488D /* Preview Content */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B38488C2B70D20C00505564 /* Done.swift in Sources */,
 				8B90237A2B66B9C600EE488D /* TaskModel.swift in Sources */,
 				8B8EB5E92B67DBB800406FAA /* TaskViewButton.swift in Sources */,
 				8B6A1B842B66DE64008F6DE8 /* AddTask.swift in Sources */,
