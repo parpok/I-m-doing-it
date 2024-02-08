@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var ModelContext
     @State private var isAddTaskPresented = false
     @State private var isDonePresented = false
-    @Query(filter: #Predicate<TaskToDo>{item in item.isDone == false}, sort: [SortDescriptor(\TaskToDo.content)]) var tasks: [TaskToDo]
+    @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var tasks: [TaskToDo]
 
     var body: some View {
         NavigationStack {
@@ -22,7 +22,7 @@ struct ContentView: View {
                         TaskViewButton(Task: task)
                     }
                 }
-                Button{
+                Button {
                     isDonePresented.toggle()
                 } label: {
                     Text("Show completed items")
