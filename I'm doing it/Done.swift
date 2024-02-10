@@ -22,6 +22,10 @@ struct Done: View {
                             Button("Delete", systemImage: "trash", role: .destructive) {
                                 ModelContext.delete(thing)
                             }
+
+                            Button("Restore", systemImage: "restart.circle") {
+                                thing.isDone.toggle() // This is just so tasks can be restored in case of accidental click
+                            }
                         }
                 }
             }.navigationTitle("Completed tasks").navigationBarTitleDisplayMode(.inline).toolbar {
