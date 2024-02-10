@@ -49,7 +49,7 @@ struct AddTask: View {
 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        ModelContext.insert(TaskToDo(id: UUID(), content: TaskContent, day: TaskDay, timeOfDay: TaskTime, isRepeating: TaskIsRepeating, isDone: false))
+                        ModelContext.insert(TaskToDo(id: UUID(), content: TaskContent, day: TaskDay, timeOfDay: TaskTime.rawValue, isRepeating: TaskIsRepeating, isDone: false))
                         Dismiss()
                     } label: {
                         Image(systemName: "plus")

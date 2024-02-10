@@ -14,7 +14,7 @@ enum TimeOfDay: String, Codable, CaseIterable, Identifiable {
     case Evening
     case Night
 
-    case Unknown = "Other"
+    case Other
 
     var id: Self { self }
 }
@@ -24,11 +24,11 @@ class TaskToDo {
     @Attribute(.unique) var id: UUID
     @Attribute(.spotlight) var content: String
     var day: Date
-    var timeOfDay: TimeOfDay
+    var timeOfDay: TimeOfDay.RawValue
     var isRepeating: Bool
     var isDone: Bool
 
-    init(id: UUID, content: String, day: Date, timeOfDay: TimeOfDay, isRepeating: Bool, isDone: Bool) {
+    init(id: UUID, content: String, day: Date, timeOfDay: TimeOfDay.RawValue, isRepeating: Bool, isDone: Bool) {
         self.id = id
         self.content = content
         self.day = day

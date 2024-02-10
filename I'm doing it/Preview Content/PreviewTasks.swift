@@ -7,4 +7,4 @@
 
 import Foundation
 
-let PreviewTask: TaskToDo = TaskToDo(id: UUID(), content: "This task is for testing purpouses", day: .now, timeOfDay: .Unknown, isRepeating: false, isDone: false)
+let PreviewTask: TaskToDo = TaskToDo(id: UUID(), content: "This task is for testing purpouses", day: .now, timeOfDay: "Other", isRepeating: false, isDone: false)
