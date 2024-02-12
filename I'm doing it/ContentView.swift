@@ -12,6 +12,8 @@ struct ContentView: View {
     @Environment(\.modelContext) private var ModelContext
     @State private var isAddTaskPresented = false
     @State private var isDonePresented = false
+
+    @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeInOut) var StuffNotDone: [TaskToDo]
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false && item.timeOfDay == "Morning" }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var MorningTasks: [TaskToDo]
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false && item.timeOfDay == "Afternoon" }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var AfternoonTasks: [TaskToDo]
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false && item.timeOfDay == "Evening" }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var EveningTasks: [TaskToDo]
@@ -20,26 +22,36 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: Text("Morning")) {
-                    ForEach(MorningTasks) { task in
-                        TaskViewButton(Task: task)
+                if MorningTasks.isEmpty == false {
+                    Section(header: Text("Morning")) {
+                        ForEach(MorningTasks) { task in
+                            TaskViewButton(Task: task)
+                        }
                     }
                 }
-                Section(header: Text("Afternoon")) {
-                    ForEach(AfternoonTasks) { task in
-                        TaskViewButton(Task: task)
+                if AfternoonTasks.isEmpty == false {
+                    Section(header: Text("Afternoon")) {
+                        ForEach(AfternoonTasks) { task in
+                            TaskViewButton(Task: task)
+                        }
                     }
                 }
-                Section(header: Text("Evening")) {
-                    ForEach(EveningTasks) { task in
-                        TaskViewButton(Task: task)
+                if EveningTasks.isEmpty == false {
+                    Section(header: Text("Evening")) {
+                        ForEach(EveningTasks) { task in
+                            TaskViewButton(Task: task)
+                        }
                     }
                 }
-                Section(header: Text("Night")) {
-                    ForEach(NightTasks) { task in
-                        TaskViewButton(Task: task)
+                if NightTasks.isEmpty == false {
+                    Section(header: Text("Night")) {
+                        ForEach(NightTasks) { task in
+                            TaskViewButton(Task: task)
+                        }
                     }
                 }
+
+//                if StuffNotDone.isEmpty == true {
                 Button {
                     isDonePresented.toggle()
                 } label: {
@@ -58,6 +70,11 @@ struct ContentView: View {
                     })
                 }
             }.navigationTitle("I'm doing it")
+                .overlay {
+                    if StuffNotDone.isEmpty == true {
+                        ContentUnavailableView("GOOD JOB", systemImage: "checkmark.seal.fill", description: Text("You've completed all the tasks"))
+                    }
+                }
         }
     }
 }
