@@ -19,9 +19,6 @@ struct Done: View {
 
     var body: some View {
         NavigationStack {
-            if StuffDone.isEmpty == true {
-                ContentUnavailableView("No completed tasks", systemImage: "exclamationmark.triangle.fill", description: Text("Please complete some tasks"))
-            }
             List {
                 if MorningStuffDone.isEmpty == false {
                     Section(header: Text("Morning")) {
