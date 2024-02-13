@@ -95,7 +95,7 @@ struct Done: View {
                 }
             }.overlay {
                 if StuffDone.isEmpty == true {
-                    ContentUnavailableView("No completed tasks", systemImage: "exclamationmark.triangle.fill", description: Text("Please complete some tasks"))
+                    ContentUnavailableView("No completed tasks", systemImage: "exclamationmark.triangle.fill", description: Text("Please do something"))
                 }
             }
         }

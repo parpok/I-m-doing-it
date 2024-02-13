@@ -50,15 +50,15 @@ struct ContentView: View {
                         }
                     }
                 }
-
-//                if StuffNotDone.isEmpty == true {
-                Button {
-                    isDonePresented.toggle()
-                } label: {
-                    Text("Show completed items")
-                }.sheet(isPresented: $isDonePresented, content: {
-                    Done()
-                })
+                if StuffNotDone.isEmpty == false {
+                    Button {
+                        isDonePresented.toggle()
+                    } label: {
+                        Text("Show completed items")
+                    }.sheet(isPresented: $isDonePresented, content: {
+                        Done()
+                    })
+                }
             }.toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -72,7 +72,19 @@ struct ContentView: View {
             }.navigationTitle("I'm doing it")
                 .overlay {
                     if StuffNotDone.isEmpty == true {
-                        ContentUnavailableView("GOOD JOB", systemImage: "checkmark.seal.fill", description: Text("You've completed all the tasks"))
+                        ContentUnavailableView {
+                            Label("Good job", systemImage: "checkmark.seal.fill")
+                        } description: {
+                            Text("You've completed everything")
+                        } actions: {
+                            Button {
+                                isDonePresented.toggle()
+                            } label: {
+                                Text("Show completed items")
+                            }.buttonStyle(.bordered).sheet(isPresented: $isDonePresented, content: {
+                                Done()
+                            })
+                        }
                     }
                 }
         }
