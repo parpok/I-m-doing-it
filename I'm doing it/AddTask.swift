@@ -17,6 +17,8 @@ struct AddTask: View {
     @State var TaskTime: TimeOfDay = TimeOfDay.Morning
     @State var TaskIsRepeating: Bool = false
 
+    @State private var displayNoTaskNameAlert = false
+
     var body: some View {
         NavigationStack {
             List {
@@ -26,14 +28,12 @@ struct AddTask: View {
                 }
                 Section(header: Text("Timing")) {
                     DatePicker("When you want to start doing it", selection: $TaskDay, displayedComponents: .date)
-                    Picker("When do you want to do it", selection: $TaskTime){
+                    Picker("When do you want to do it", selection: $TaskTime) {
                         Text("Morning").tag(TimeOfDay.Morning)
                         Text("Afternoon").tag(TimeOfDay.Afternoon)
                         Text("Evening").tag(TimeOfDay.Evening)
                         Text("Night").tag(TimeOfDay.Night)
                     }.pickerStyle(.segmented)
-                    
-
                 }
                 Section(header: Text("Other")) {
                     Toggle("Do you want to repeat it?", isOn: $TaskIsRepeating)
@@ -49,8 +49,12 @@ struct AddTask: View {
 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        ModelContext.insert(TaskToDo(id: UUID(), content: TaskContent, day: TaskDay, timeOfDay: TaskTime.rawValue, isRepeating: TaskIsRepeating, isDone: false))
-                        Dismiss()
+                        if TaskContent.isEmpty == true {
+                            displayNoTaskNameAlert.toggle()
+                        } else {
+                            ModelContext.insert(TaskToDo(id: UUID(), content: TaskContent, day: TaskDay, timeOfDay: TaskTime.rawValue, isRepeating: TaskIsRepeating, isDone: false))
+                            Dismiss()
+                        }
                     } label: {
                         Image(systemName: "plus")
                     }
