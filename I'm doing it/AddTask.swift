@@ -8,6 +8,7 @@
 import SwiftData
 import SwiftUI
 
+@MainActor
 struct AddTask: View {
     @Environment(\.modelContext) private var ModelContext
     @Environment(\.dismiss) private var Dismiss
@@ -57,6 +58,8 @@ struct AddTask: View {
                         }
                     } label: {
                         Image(systemName: "plus")
+                    }.accessibilityLabel(Text("Save task")).alert("Cannot save a task without its name", isPresented: $displayNoTaskNameAlert) {
+                        Button("OK", role: .cancel) {}
                     }
                 }
             }

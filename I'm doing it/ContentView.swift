@@ -8,6 +8,7 @@
 import SwiftData
 import SwiftUI
 
+@MainActor
 struct ContentView: View {
     @Environment(\.modelContext) private var ModelContext
     @State private var isAddTaskPresented = false
@@ -65,7 +66,7 @@ struct ContentView: View {
                         isAddTaskPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
-                    }.sheet(isPresented: $isAddTaskPresented, content: {
+                    }.accessibilityLabel(Text("Add task")).sheet(isPresented: $isAddTaskPresented, content: {
                         AddTask()
                     })
                 }
