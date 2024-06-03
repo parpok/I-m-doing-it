@@ -35,6 +35,7 @@
 		8B181AA22B7CCC01004E0E92 /* I_m_doing_it_UI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_m_doing_it_UI_Tests.swift; sourceTree = "<group>"; };
 		8B181AA42B7CCC01004E0E92 /* I_m_doing_it_UI_TestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_m_doing_it_UI_TestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B38488B2B70D20C00505564 /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
+		8B410A022C0E746B00D453F9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8B6A1B812B66DAB7008F6DE8 /* PreviewTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTasks.swift; sourceTree = "<group>"; };
 		8B6A1B832B66DE64008F6DE8 /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		8B8EB5E82B67DBB800406FAA /* TaskViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewButton.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		8B90235D2B66B9A800EE488D = {
 			isa = PBXGroup;
 			children = (
+				8B410A022C0E746B00D453F9 /* README.md */,
 				8B9023682B66B9A900EE488D /* I'm doing it */,
 				8B181AA12B7CCC01004E0E92 /* I'm doing it UI Tests */,
 				8B9023672B66B9A900EE488D /* Products */,

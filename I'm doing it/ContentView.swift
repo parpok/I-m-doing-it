@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var isDonePresented = false
 
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeInOut) var StuffNotDone: [TaskToDo]
+    @Query(filter: #Predicate<TaskToDo> { item in item.isDone == true }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeInOut) var StuffDone: [TaskToDo]
+
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false && item.timeOfDay == "Morning" }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var MorningTasks: [TaskToDo]
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false && item.timeOfDay == "Afternoon" }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var AfternoonTasks: [TaskToDo]
     @Query(filter: #Predicate<TaskToDo> { item in item.isDone == false && item.timeOfDay == "Evening" }, sort: [SortDescriptor(\TaskToDo.content)], animation: .easeOut) var EveningTasks: [TaskToDo]
@@ -72,7 +74,13 @@ struct ContentView: View {
                 }
             }.navigationTitle("I'm doing it")
                 .overlay {
-                    if StuffNotDone.isEmpty == true {
+                    if StuffNotDone.isEmpty == true && StuffDone.isEmpty {
+                        ContentUnavailableView {
+                            Label("Hello there", systemImage: "scribble.variable")
+                        } description: {
+                            Text("Currently there's nothing to do so add some tasks")
+                        }
+                    } else if StuffNotDone.isEmpty == true {
                         ContentUnavailableView {
                             Label("Good job", systemImage: "checkmark.seal.fill")
                         } description: {
